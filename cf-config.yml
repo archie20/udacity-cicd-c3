@@ -13,9 +13,9 @@ Resources:
     Properties:
       SecurityGroups:
         - !Ref InstanceSG
-          KeyName: udakey2
-          ImageId: !Ref Machine
-          InstanceType: t2.micro
+      KeyName: udakey2
+      ImageId: !Ref Machine
+      InstanceType: t2.micro
   InstanceSG:
     Type: 'AWS::EC2::SecurityGroup'
     Properties:
