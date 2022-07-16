@@ -29,4 +29,5 @@ Outputs:
   EC2Instance:
     Description: Ip address of instance
     Value: !GetAtt EC2Instance.IpAddress
-    Name: !Sub ${EnvironmentName}-IP
+    Export:
+      Name: !Sub ${EnvironmentName}-IP
