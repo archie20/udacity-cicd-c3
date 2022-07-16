@@ -28,6 +28,6 @@ Resources:
 Outputs:
   EC2Instance:
     Description: Ip address of instance
-    Value: !GetAtt EC2Instance.IpAddress
+    Value: !GetAtt EC2Instance.PublicIp
     Export:
       Name: !Sub ${EnvironmentName}-IP
