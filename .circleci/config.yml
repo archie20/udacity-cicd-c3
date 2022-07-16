@@ -33,6 +33,10 @@ jobs:
       - add_ssh_keys:
           fingerprints: [58:15:66:7c:ce:e8:20:4f:84:d0:4c:2e:a9:ee:5a:f9]
       - run:
+          name: Install AWS
+          command: |
+            apk add --no-cache aws-cli    
+      - run:
           name: "Create inventory.txt..." 
           command: |
             echo "[all]" > inventory.txt      
