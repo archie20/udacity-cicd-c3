@@ -19,8 +19,8 @@ jobs:
           name: "Create CF stack..."
           command: |
             aws cloudformation create-stack \
-              --template-body cf-config.yml \
-              --parameters=cf-params.json \
+              --template-body file://cf-config.yml \
+              --parameters file://cf-params.json \
               --stack-name stack-${CIRCLE_WORKFLOW_ID:0:5} \
               --capabilities "CAPABILITY_IAM" "CAPABILITY_NAMED_IAM" \
               --region us-east-1
