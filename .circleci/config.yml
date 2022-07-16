@@ -58,4 +58,4 @@ jobs:
 workflows:
   the-workflow:
     jobs:
-      - create-infrastructure
+      - configure-infrastructure
