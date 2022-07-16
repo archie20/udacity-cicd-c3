@@ -1,0 +1,10 @@
+[
+    {
+        "ParameterKey": "EnvironmentName",
+        "ParameterValue": "CICD-C3"
+    },
+    {
+        "ParameterKey": "Machine",
+        "ParameterValue": "ami-052efd3df9dad4825"
+    }
+]

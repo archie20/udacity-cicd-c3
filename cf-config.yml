@@ -1,0 +1,32 @@
+Description: C3 L4
+Parameters:
+  EnvironmentName:
+    Description: NAme of environment
+    Type: String
+  Machine:
+    Description: AMI of ec2
+    Type: String
+
+Resources:
+  EC2Instance: 
+    Type: 'AWS::EC2::Instance'
+    Properties:
+      SecurityGroups:
+        - !Ref InstanceSG
+        KeyName: udakey2
+        ImageId: !Ref Machine
+        InstanceType: t2.micro
+  InstanceSG:
+    Type: 'AWS::EC2::SecurityGroup'
+    Properties:
+      GroupDescription: SSH access via port 22
+      SecurityGroupIngress:
+        - IpProtocol: tcp
+          FromPort: '22'
+          ToPort: '22'
+          CidrIp: 0.0.0.0/0
+Outputs:
+  EC2Instance:
+    Description: Ip address of instance
+    Value: !GetAtt EC2Instance.IpAddress
+    Name: !Sub ${EnvironmentName}-IP
