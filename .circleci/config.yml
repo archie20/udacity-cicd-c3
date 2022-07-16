@@ -45,9 +45,9 @@ jobs:
             --filters "Name=tag:Name,Values=udaC3" \
             --output text >> inventory.txt  
       - persist_to_workspace:
-          root: ~/     
+          root: .     
           paths: 
-            - inventory.txt
+            - .
   configure-infrastructure:
     docker: 
       - image: python:3.7-alpine3.11
@@ -60,7 +60,7 @@ jobs:
           command: |
             apk add --update ansible
       - attach_workspace:
-          at: ~/      
+          at: .      
       - run:
           name: Run playbook and configure server
           command: |
