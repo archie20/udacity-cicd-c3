@@ -74,7 +74,7 @@ jobs:
           name: Run playbook and configure server
           command: |
             ansible-playbook main-playbook.yml -i inventory.txt
-  smoke_test:
+  smoke-test:
     docker: 
       - image: amazon/aws-cli
     steps:
