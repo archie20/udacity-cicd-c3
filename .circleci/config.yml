@@ -1,6 +1,15 @@
 
 version: 2.1
 
+commands: 
+  destroy_environment:
+    steps:
+      - run:
+          name: Destroy environment
+          when: on_fail
+          command: |
+            aws cloudformation delete-stack \
+            --stack-name stack-${CIRCLE_WORKFLOW_ID:0:5} 
 jobs:
   say-hello:
     docker:
@@ -65,10 +74,21 @@ jobs:
           name: Run playbook and configure server
           command: |
             ansible-playbook main-playbook.yml -i inventory.txt
+  smoke_test:
+    docker: 
+      - image: amazon/aws-cli
+    steps:
+      - run: 
+          name: Smoke Test
+          command: exit 1 
+      - destroy_environment     
 workflows:
   the-workflow:
     jobs:
       - create-infrastructure
-      - configure-infrastructure:
+      # - configure-infrastructure:
+      #     requires: 
+      #       - create-infrastructure
+      - smoke-test:
           requires: 
-            - create-infrastructure
+            - create-infrastructure      
